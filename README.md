@@ -20,10 +20,13 @@
 ## 从这里开始
 
 **先看这个：** [官方 App 下架、遥控器丢了，还能怎么用](docs/no-app-no-remote.md)  
+遇到「连不上、按了没反应、数据不对」这类问题，直接看 [docs/troubleshooting.md](docs/troubleshooting.md)，按症状顺序排查。  
+
 按成本从低到高四条路：确认型号 → 拿回说明书信息 → 抢救历史数据 → 按红外 / 射频 / 蓝牙分别处理遥控问题，最后有一条「什么都不折腾」的兜底方案。
 
 再按需要往下读：
 
+- [docs/troubleshooting.md](docs/troubleshooting.md) — **通用排查手册**：连不上 / 没反应 / 没数据 / 数据不对，按症状走，别的型号也能用
 - [docs/data-model.md](docs/data-model.md) — 运动记录的数据结构、日 / 周 / 累计 / 趋势的聚合口径
 - [docs/features.md](docs/features.md) — 目标设定、语音报数、周报、累计天数、趋势图的功能规格
 - [docs/known-issues.md](docs/known-issues.md) — 实测问题：暂停后计时被重置、实体遥控器无反应、体脂秤无数据
