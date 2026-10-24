@@ -47,6 +47,8 @@
 | [CodeJawn/walkingpad](https://github.com/CodeJawn/walkingpad) | KingSmith WalkingPad，浏览器控制 | **真正的暂停/继续 + 跨暂停累计统计**，正是官方 App 最缺的部分 |
 | [janposselt/treadmill-monitor](https://github.com/janposselt/treadmill-monitor) | 支持 FTMS 的跑步机（Web Bluetooth） | 心率控速、开箱可用版本、Disclaim 与 Requirements 的写法 |
 | [korniychuk/treadmill-bluetooth-macos](https://github.com/korniychuk/treadmill-bluetooth-macos) | Yesoul 跑步机，macOS BLE 守护进程 | 后台常驻 + 实时数据 + 步数目标 |
+| [marcuspuchalla/trot](https://github.com/marcuspuchalla/trot) | LifeSpan / FTMS，多平台单文件程序 | 按「驱动」拆协议层（一型号一驱动），自留本地 API + 诊断导出，README 里有 Design rules |
+| [Duinrahaic/FitOSC](https://github.com/Duinrahaic/FitOSC) | 走步机 / 跑步机，VRChat 化身驱动 | 驱动预览版 + 征集实测的流程，值得借鉴怎么收集跨型号验证结果 |
 
 如果上面某个项目直接适配你的机器，优先用现成的，不必自己重写。
 
@@ -75,6 +77,18 @@
 ## 检索关键词
 
 下架app、跑步机、跑步机遥控、跑步机教程、跑步机课程、跑步机说明书、蓝牙遥控器丢失、跑步机 App 替代、走步机、健步机、跑步机数据导出、跑步机闲置怎么办
+
+## 求助 / 提问前先凑齐这五项
+
+不管是在本仓库还是去别的项目提 issue，缺项基本等于来回追问。先把下面五行填满，判断速度会快很多：
+
+1. **机器**：品牌 + 型号 + 面板或铭牌上的型号串（拍一张照更好）
+2. **手机 / 电脑**：型号 + 系统版本（安卓/iOS/macOS 的具体版本号，不是「最新」）
+3. **App**：名字 + 版本号 + 从哪装的（商店 / 源码 / 自己编的）
+4. **现象**：在哪一步停住、报什么错（原样抄报错，别转述），能稳定复现还是偶发
+5. **已经试过什么**：换过哪台手机、哪个 App、哪个位置，结果有没有变化
+
+蓝牙相关的再加一条：**扫描时能不能看到设备，广播名是什么**。这一条能直接把人分成「根本没扫到」和「扫到但连不上」两类，排查路径完全不同。
 
 ## 贡献
 
