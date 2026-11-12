@@ -57,6 +57,7 @@
 4. **单位换算**：原始值常是 0.1 km/h、0.01 km、或需要除以 10/100，先按「速度会不会离谱」判断单位对不对。
 5. **一机一连接**：有些设备只允许一个客户端，旧连接没释放就再也读不到。
 6. **经中间设备代理时，服务发现可能被截断**：用 ESP32 蓝牙代理（ESPHome / Home Assistant）连接时，如果日志里出现 `gatt_process_read_by_type_rsp invalid handle`，紧接着却打印「Discovery finished」，那拿到的服务表通常是残缺的——`0x1826` / `0x2ACD` 会整段消失，而同一台机器用 Android nRF Connect 或 Windows Bleak 能看到。别急着怀疑机器，先换一个能完成完整发现的客户端（手机或电脑做桥接）对照一次。
+   已知的一个具体成因：机器在特征发现阶段把 Device Information 服务的句柄回成乱序（例如 0x0109、0x0107、0x010B），而 ESP-IDF 5.5.6 起在 Bluedroid 里加了「句柄必须严格递增」的校验，遇到乱序直接以 `GATT_INVALID_HANDLE` 结束整轮发现，后面的服务全丢；同样这台机器在 5.5.5、Android、BlueZ 上都能完整读出。所以要么把代理侧 ESP-IDF 固定回 5.5.5，要么等上游放宽校验。
 
 
 ---
