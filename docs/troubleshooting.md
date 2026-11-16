@@ -76,6 +76,9 @@
    （第 7 条来自社区反馈：一台 Finnlo / ANPLUS 广播的跑步机，速度控制实际走 `0xFFE5`/`0xFFB0` 私有协议，标准控制点全程无回执。）
 8. 停止也可能被厂商机型吃掉：有走步机在**皮带还在转**的时候会忽略标准的 Stop 请求（写成功、机器不停）。可行做法是先发 Pause、等状态通知里速度归零或 `treadmill.stop_step` 这类字段回传，再发 Stop；注意读 Pause 之后的回执，别当成 Stop 已生效。
    （第 8 条来自社区反馈：一台 Kingsmith WalkingPad G15，皮带运转时标准 Stop 被忽略，改成「Pause → 等回传 → Stop」才生效。）
+9. 写控制点时**带响应写可能直接被拒**：有些机器的 `0x2AD9` 只有 Indicate + Write Without Response 两个属性，没有带响应的 Write，于是发 `write with response` 会报 `GATT error 3 / Write not permitted`（表现是「读数据正常、按钮全无反应」）。正确做法是按特征值属性选写类型：没有 Write 属性就用 `write without response`。
+   注意副作用：改用无响应写之后就没有 ATT 层确认了，写成功不代表机器接受，唯一凭证还是控制点的 indication，所以仍要「一次一条、等回执、超时才重试」。也有的机型连 Indicate 都没有，那种能控但看不到回执，得在日志里区分开。
+   （第 9 条来自社区反馈：Mobvoi Home TM10 跑步机，控制点仅 Indicate + Write Without Response。）
 
 ---
 
